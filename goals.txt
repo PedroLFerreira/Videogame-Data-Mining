@@ -1,0 +1,37 @@
+Perguntas:
+
+	Data Preparation
+Removing NaNs
+Checking data types (user score from string to float64)
+
+	EDA
+Most Popular Games
+Which Genre is popular
+Which year sales was at its peak
+Region wise sales
+Yearwise game releases
+Yearwise game sales
+Correlation matrix between numerical features
+
+	Supervised Learning Classification
+Predict Platform from other features
+Predict Rating from other features
+Predict Publisher
+Predict Developer
+
+	Supervised Learning Methods
+Naive Bayes
+K-Nearest Neighbours
+Decision Trees
+Random Forest
+Support Vector Machine
+
+	Dimensionality Reduction
+Linear Discriminant Analysis
+Principal Component Analysis
+
+	Unsupervised Learning Methods
+K-Means
+
+	Extras
+Predict GameOfTheYear
