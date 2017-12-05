@@ -1,0 +1,26 @@
+5th:
+PS
+
+6th:
+XB
+PS
+GC
+DC
+	GBA
+
+7th:
+X360
+PS3
+Wii
+	DS
+	PSP
+
+8th:
+PS4
+XOne
+	3DS
+	PSV
+WiiU
+
+else:
+PC

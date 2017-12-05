@@ -25,6 +25,7 @@ K-Nearest Neighbours
 Decision Trees
 Random Forest
 Support Vector Machine
+Creation of new features from the existing ones (mostly to remove scale)
 
 	Dimensionality Reduction
 Linear Discriminant Analysis
