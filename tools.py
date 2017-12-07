@@ -43,8 +43,8 @@ def plot_confusion_matrix(cm, classes,
     plt.tight_layout()
 
 
-def plot_correlation_matrix(cm, attributes, title='Correlation Matrix', cmap='RdBu', figsize=(12,12)):
-    plt.figure(figsize=figsize)
+def plot_correlation_matrix(cm, attributes, title='Correlation Matrix', cmap='RdBu', figsize=(12,12),savename=None):
+    fig=plt.figure(figsize=figsize)
     #plt.matshow(eucorr.as_matrix(), cmap=plt.cm.Blues)
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)
@@ -62,6 +62,8 @@ def plot_correlation_matrix(cm, attributes, title='Correlation Matrix', cmap='Rd
                   color="white" if cm[i, j] > thresh else "black")
     
     plt.tight_layout()
+    if savename not None:
+        fig.savefig(savename,bbox_inches='tight')
 
 def gen_log_space(limit, n):
     """ generate integers in logaritmic space"""
