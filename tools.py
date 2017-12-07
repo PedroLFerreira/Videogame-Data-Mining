@@ -62,7 +62,7 @@ def plot_correlation_matrix(cm, attributes, title='Correlation Matrix', cmap='Rd
                   color="white" if cm[i, j] > thresh else "black")
     
     plt.tight_layout()
-    if savename not None:
+    if savename != None:
         fig.savefig(savename,bbox_inches='tight')
 
 def gen_log_space(limit, n):
