@@ -18,6 +18,7 @@ Predict Platform from other features
 Predict Rating from other features
 Predict Publisher
 Predict Developer
+Predict Global Sales from features like Platform, Genre, Publisher, Critic_Score (Miguel Frazão does this)
 
 	Supervised Learning Methods
 Naive Bayes
@@ -36,3 +37,4 @@ K-Means
 
 	Extras
 Predict GameOfTheYear
+Predict Most Successful Publisher in 2017 (Miguel Frazão does this)
