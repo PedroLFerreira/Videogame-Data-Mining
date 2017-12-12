@@ -1,0 +1,54 @@
+library(e1071)
+library(caret)
+
+a<-videogames
+a<-transform(a, User_Score = as.double(User_Score)*10)
+a<-transform(a, Year_of_Release  = as.integer(Year_of_Release))
+a<-transform(a, Genre = as.factor(Genre))
+a<-transform(a, Platform = as.factor(Platform))
+a<-transform(a, Rating = as.factor(Rating))
+str(a)
+summary(a)
+attach(a)
+summary(Critic_Count)
+summary(User_Count)
+mydata<-a[which(Year_of_Release>2008 & Critic_Count>=12 & User_Count>=10), c(2,4,16,10,13)]
+str(mydata)
+levels(mydata$Rating)
+mydata$Rating2<-ifelse(mydata$Rating=="T"|mydata$Rating=="AO"|mydata$Rating=="M", "Has mature content", 
+                       "Doesn't have mature content")
+mydata<-transform(mydata, Rating2= as.factor(Rating2))
+table(mydata[,1])
+str(mydata)
+table(mydata[,1])
+barplot(table(mydata[,1]))
+barplot(table(mydata[,2]))
+barplot(table(mydata[,6]))
+str(mydata)
+summary(mydata$Global_Sales)
+var(mydata$Global_Sales)
+summary(mydata$User_Score)
+var(mydata$User_Score)
+cor(User_Score,Critic_Score,use =  "na.or.complete")
+mydata$Class<-ifelse(mydata$Global_Sales<0.15 | mydata$User_Score<66,"D",
+                     ifelse(mydata$Global_Sales<0.4 | mydata$User_Score<75,"C",
+                            ifelse(mydata$Global_Sales<0.95| mydata$User_Score<81,"B","A")))
+mydata<-transform(mydata, Class= as.factor(Class))
+mydata<-mydata[complete.cases(mydata),]
+barplot(table(mydata$Class))
+mydata<-mydata[,c(-3,-4,-5)]
+o<-sample.int(length(mydata[,1]),ceiling(0.8*length(mydata[,1])))
+model1<-naiveBayes(Class~.,data=mydata[o,])
+summary(model1)
+table(predict(model1,mydata[-o,c(1,2,3)]))
+table(mydata[-o,4])
+confusionMatrix(predict(model1,mydata[-o,c(1,2,3)]),mydata[-o,4])
+model2<-svm(Class~.,data=mydata[o,])
+table(predict(model2,mydata[-o,c(1,2,3)]))
+table(mydata[-o,4])
+confusionMatrix(predict(model2,mydata[-o,c(1,2,3)]),mydata[-o,4])
+
+
+
+remove(mydata,a,o,model1,model2)
+
